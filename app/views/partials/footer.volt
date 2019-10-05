@@ -1,0 +1,1 @@
+© <?php echo date("Y"); ?> <a href="/">KOMUNITA.ch</a>

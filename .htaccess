@@ -1,0 +1,10 @@
+php_flag display_errors on
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule  ^$ public/    [L]
+    
+    RewriteCond   %{REQUEST_FILENAME} !-d
+    RewriteCond   %{REQUEST_FILENAME} !-f
+    RewriteRule  ((?s).*) public/$1 [L]
+</IfModule>
