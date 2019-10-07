@@ -22,6 +22,9 @@
         {{ passwordField("password") }}
     </p>
 
+    <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
+        value='<?php echo $this->security->getToken() ?>'/>
+        
     <p>
         {{ submitButton("Login") }}
     </p>

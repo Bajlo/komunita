@@ -30,31 +30,33 @@ class AuthController extends BaseController
             "bind" => ['login' => '%'.$login.'%']
         ];
 
-        //$user = Users::findFirstByLogin(encrypt($login));
-        $user = Users::findFirst($user_search);
-        if ($user) {
+        if ($this->security->checkToken()) {
+            //$user = Users::findFirstByLogin(encrypt($login));
+            $user = Users::findFirst($user_search);
+            if ($user) {
 
-            if ($this->security->checkHash($password, $user->password)) {
+                if ($this->security->checkHash($password, $user->password)) {
 
-                $this->session->set('auth', [
-                    'id' => $user->id,
-                    'name' => $user->name,
-                    'email' => $user->email
-                ]);  
-                $this->session->set('logged', true);  
+                    $this->session->set('auth', [
+                        'id' => $user->id,
+                        'name' => $user->name,
+                        'email' => $user->email
+                    ]);  
+                    $this->session->set('logged', true);  
 
-                $this->flashSession->success("Fantastic!");
-                $this->response->redirect('/');
+                    $this->flashSession->success("Fantastic!");
+                    $this->response->redirect('/');
 
+                }
+
+            } else {
+                // To protect against timing attacks. Regardless of whether a user
+                // exists or not, the script will take roughly the same amount as
+                // it will always be computing a hash.
+                $this->security->hash(rand());
             }
-
-        } else {
-            // To protect against timing attacks. Regardless of whether a user
-            // exists or not, the script will take roughly the same amount as
-            // it will always be computing a hash.
-            $this->security->hash(rand());
+            // The token is OK
         }
-
         // The validation has failed
         $this->flash->error("Incorrect credentials"); 
         //return $this->dispatcher->forward(["controller" => "auth","action" => "login"]);

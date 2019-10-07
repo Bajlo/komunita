@@ -22,6 +22,9 @@
         <?= $this->tag->passwordfield('password') ?>
     </p>
 
+    <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
+        value='<?php echo $this->security->getToken() ?>'/>
+        
     <p>
         <?= $this->tag->submitbutton('Login') ?>
     </p>
