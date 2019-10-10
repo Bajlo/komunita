@@ -5,9 +5,9 @@ use Phalcon\Config;
 $config =  new Config([
     'database' => [
         'adapter'     => 'Mysql',
-        'host'        => '80.211.177.70',
+        'host'        => '94.177.216.201',
         'username'    => 'root',
-        'password'    => 'root',
+        'password'    => 'Bajlo2000',
         'dbname'      => 'phalcon',
         'charset'     => 'utf8',
     ],
