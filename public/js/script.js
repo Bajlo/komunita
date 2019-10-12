@@ -153,7 +153,7 @@ $(function(){
     select: function (event, ui) {
       $(this).val(ui.item.value);  
       $('#location_id').val(ui.item.id);  
-      //$(this).closest('form').trigger('submit');
+      $(this).closest('form').trigger('submit');
     },
 		minLength:2
   }).focus(function() {
