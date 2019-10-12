@@ -79,7 +79,7 @@ function decrypt($str){
 
 function get_menu_items($slug=false) {
     $menu = [
-        'firmy-sluzby' => ['id'=>'2','slug'=>'firmy-sluzby','title'=>'Firmy a služby'],
+        'firmy-sluzby' => ['id'=>'2','slug'=>'firmy-sluzby','title'=>'Služby'],
         'praca' => ['id'=>'1','slug'=>'praca','title'=>'Práca'],
         'byvanie' => ['id'=>'3','slug'=>'byvanie','title'=>'Bývanie'],
         'doprava' => ['id'=>'4','slug'=>'doprava','title'=>'Doprava'],
